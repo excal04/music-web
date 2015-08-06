@@ -7,16 +7,27 @@ var nprUrl = "http://api.npr.org/query?id=61&fields=relatedLink,title,byline,tex
 app.controller("PlayerController", ["$scope", "$http", function($scope, $http) {
     $scope.audio = document.createElement("audio");
     $scope.playing = false;
-    $scope.audio.src = "./HumanBeatbox1.mp3";
+    $scope.currentTrack = null;
+    // $scope.audio.src = "./HumanBeatbox1.mp3";
 
-    $scope.play = function() {
+    $scope.play = function(program) {
+        if ($scope.playing) {
+            $scope.stop(program);
+            return;
+        }
+        // format.mp4.$text is the route to the mp4 file from the NPR api
+        var url = program.audio[0].format.mp4.$text;
+        $scope.audio.src = url;
         $scope.audio.play();
         $scope.playing = true;
+
+        console.log("play func");
     };
 
-    $scope.stop = function() {
+    $scope.stop = function(program) {
         $scope.audio.pause();
         $scope.playing = false;
+        console.log("stop func");
     };
 
     $scope.audio.addEventListener("ended", function() {
@@ -33,6 +44,7 @@ app.controller("PlayerController", ["$scope", "$http", function($scope, $http) {
         console.log("DATA:");
         console.log(data);
 
+        // assign data from JSON to programs
         $scope.programs = data.list.story;
     }).error(function() {
         // error occured

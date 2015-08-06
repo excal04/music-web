@@ -16,11 +16,19 @@
             playing audio: <b>{{ playing }}</b>
 
             <h1>PROGRAMS</h1>
-            {{ programs }}
+            <!-- {{ programs }} -->
+            <li ng-repeat="program in programs" ng-click="play(program)">
+                <!-- this is how the json is structured -->
+                <span>{{ program.title.$text }}</span>
+            </li>
         </div>
 
+        <h3></h3>
+
+        <br />
         <div ng-controller="ClockController">
             time: {{ clock }}
         </div>
+
     </body>
 </html>

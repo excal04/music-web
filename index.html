@@ -14,6 +14,13 @@
             <button ng-click="play()" >PLAY</button>
             <button ng-click="stop()" >STOP</button>
             playing audio: <b>{{ playing }}</b>
+
+            <h1>PROGRAMS</h1>
+            {{ programs }}
+        </div>
+
+        <div ng-controller="ClockController">
+            time: {{ clock }}
         </div>
     </body>
 </html>

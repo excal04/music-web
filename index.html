@@ -10,6 +10,10 @@
         <script src="js/main.js"></script>
     </head>
     <body>
-        <h1>{{1 + 10}}</h1>
+        <div ng-controller="PlayerController">
+            <button ng-click="play()" >PLAY</button>
+            <button ng-click="stop()" >STOP</button>
+            playing audio: <b>{{ playing }}</b>
+        </div>
     </body>
 </html>

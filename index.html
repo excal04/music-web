@@ -21,9 +21,10 @@
                 <!-- this is how the json is structured -->
                 <span>{{ program.title.$text }}</span>
             </li>
-        </div>
 
-        <h3></h3>
+            <br />
+            <h3 ng-show="currentTrack">Now Playing: {{ currentTrack }}</h3>
+        </div>
 
         <br />
         <div ng-controller="ClockController">

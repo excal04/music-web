@@ -20,6 +20,8 @@ app.controller("PlayerController", ["$scope", "$http", function($scope, $http) {
         $scope.audio.src = url;
         $scope.audio.play();
         $scope.playing = true;
+        $scope.currentTrack = program.title.$text;
+        console.log("current = ", $scope.currentTrack);
 
         console.log("play func");
     };
@@ -28,6 +30,7 @@ app.controller("PlayerController", ["$scope", "$http", function($scope, $http) {
         $scope.audio.pause();
         $scope.playing = false;
         console.log("stop func");
+        $scope.currentTrack = null;
     };
 
     $scope.audio.addEventListener("ended", function() {
@@ -35,6 +38,8 @@ app.controller("PlayerController", ["$scope", "$http", function($scope, $http) {
         $scope.$apply(function() {
             $scope.stop();
         });
+
+        $scope.currentTrack = null;
     });
 
     $http({

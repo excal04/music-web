@@ -97,3 +97,20 @@ app.factory("player", ["audio", "$rootScope",
         });
         return player;
 }]);
+
+
+app.factory("nprService", ["$http", function($http) {
+    function doRequest(apiKey) {
+        return $http({
+            method: "JSONP",
+            url: nprUrl + "&apiKey=" + apiKey + "&callback=JSON_CALLBACK"
+        });
+    }
+
+    return {
+        programs: function(apiKey){
+            console.log("npr service object");
+            return doRequest(apiKey);
+        }
+    };
+}]);

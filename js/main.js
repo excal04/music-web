@@ -102,8 +102,8 @@ app.factory("player", ["audio", "$rootScope",
 app.factory("nprService", ["$http", function($http) {
     function doRequest(apiKey) {
         return $http({
-            method: "JSONP",
-            url: nprUrl + "&apiKey=" + apiKey + "&callback=JSON_CALLBACK"
+            method: "GET",
+            url: nprUrl + "&apiKey=" + apiKey// + "&callback=JSON_CALLBACK"
         });
     }
 

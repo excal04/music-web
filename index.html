@@ -17,13 +17,15 @@
 
             <h1>PROGRAMS</h1>
             <!-- {{ programs }} -->
-            <li ng-repeat="program in programs" ng-click="play(program)">
+            <li ng-repeat="program in programs" ng-click="player.play(program)">
                 <!-- this is how the json is structured -->
                 <span>{{ program.title.$text }}</span>
             </li>
 
             <br />
-            <h3 ng-show="currentTrack">Now Playing: {{ currentTrack }}</h3>
+            <h3 ng-show="player.currentTrack">Now Playing: {{ player.currentTrack }}</h3>
+            <h5 ng-show="player.currentTrack">current time: {{ player.currentTime() }}</h5>
+            <h5 ng-show="player.currentTrack">track duration: {{ player.currentDuration() }}</h5>
         </div>
 
         <br />
